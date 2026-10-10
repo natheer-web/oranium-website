@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #07090f;
+  --color-midnight: #0b1220;
+  --color-flame: #ff6a1a;
+  --color-ember: #ff9a3c;
+  --color-cyber: #22d3ee;
+
+  --font-sans: var(--font-cairo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-latin: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-float: float 7s ease-in-out infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+/* بطاقة زجاجية (Glassmorphism) */
+@utility glass {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.02));
+  border: 1px solid rgb(255 255 255 / 0.1);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 50px -16px rgb(255 106 26 / 0.28);
+}
+
+/* خلفية متدرجة */
+@utility bg-aurora {
+  background:
+    radial-gradient(60% 50% at 78% 18%, rgb(255 106 26 / 0.2), transparent),
+    radial-gradient(50% 50% at 12% 88%, rgb(34 211 238 / 0.15), transparent),
+    linear-gradient(180deg, #0b1220, #07090f);
+}
+
+/* شبكة هندسية خافتة */
+@utility bg-grid-lines {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-float { animation: none; }
+}
